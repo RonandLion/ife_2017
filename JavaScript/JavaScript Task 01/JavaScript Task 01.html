@@ -12,8 +12,9 @@
   <div>您输入的值是：<span id="aqi-display">尚无录入</span></div>
 
 <script type="text/javascript">
-var button = document.getElementById("button");
-button.onclick = function() {
+(function(){
+  var button = document.getElementById("button");
+  button.onclick = function() {
   /*
   在注释下方写下代码
   给按钮button绑定一个点击事件
@@ -23,7 +24,7 @@ button.onclick = function() {
   var input = document.getElementById("aqi-input");
   var display = document.getElementById("aqi-display");
   display.innerHTML = input.value;
-}
+})();
 
 </script>
 </body>
