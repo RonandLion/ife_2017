@@ -51,7 +51,7 @@ function getData() {
   var source = document.getElementById("source");
   var items = source.children;
   for(var i=0; i<items.length; i++){
-    var city = items[i].innerHTML[0]+items[i].innerHTML[1];
+    var city = items[i].innerHTML.substring(0,2);
     var aqi = items[i].children[0].innerHTML;
     data.push([city,aqi]);
   }
