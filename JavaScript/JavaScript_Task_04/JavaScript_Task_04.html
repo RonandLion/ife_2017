@@ -77,14 +77,7 @@
 
     var rightoutBtn = document.getElementById("rightout");
     rightoutBtn.onclick = rightout;
-
-    console.log(queue.children.length);
-    for(var i=0; i<queue.children.length; i++){
-      console.log(queue.children[i]);
-      queue.children[i].onclick = function(){
-        del(children[i]);
-      }
-    }
+    
   }
 
   init();
