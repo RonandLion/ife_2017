@@ -3,6 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>IFE JavaScript Task 04</title>
+    <style>
+      .items {
+        background-color: red;
+        color: white;
+        margin: 3px;
+        padding: 5px;
+      }
+    </style>
   </head>
 <body>
   <input type="text" id="input" />
@@ -19,7 +27,7 @@
     if(!isNaN(n) && n!==""){
       var item = document.createElement("span");
       item.className = "items";
-      item.innerHTML = n + " ";
+      item.innerHTML = n;
     }
     return item;
   }
