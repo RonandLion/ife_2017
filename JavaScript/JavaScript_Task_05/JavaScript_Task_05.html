@@ -89,13 +89,7 @@
     for(var i=1; i<queue.children.length; i++){
       for(var j=0; j<queue.children.length-i; j++){
         if(Number(queue.children[j].children[0].innerHTML)>Number(queue.children[j+1].children[0].innerHTML)){
-
-          var temp = queue.children[j].children[0].innerHTML;
-          queue.children[j].children[0].innerHTML = queue.children[j+1].children[0].innerHTML;
-          queue.children[j+1].children[0].innerHTML = temp;
-
-          queue.children[j].style.height = queue.children[j].children[0].innerHTML;
-          queue.children[j+1].style.height = queue.children[j+1].children[0].innerHTML;
+          queue.insertBefore(queue.children[j+1],queue.children[j]);
         }
       }
     }
