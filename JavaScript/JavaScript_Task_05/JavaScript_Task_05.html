@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 04</title>
+    <style>
+      #queue{
+        /*height: 100px;*/
+      }
+      .items {
+        background-color: red;
+        color: white;
+        margin: 3px;
+        padding: 5px;
+        width: 10px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+<body>
+  <input type="text" id="input" />
+  <button id="leftin">左侧入</button>
+  <button id="rightin">右侧入</button>
+  <button id="leftout">左侧出</button>
+  <button id="rightout">右侧出</button>
+  <div id="queue"></div>
+<script>
+  var queue = document.getElementById("queue");
+
+  function createItem(){
+    if(queue.children.length<60){
+      var n = input.value;
+      if(!isNaN(n) && n!==""){
+        if(n>=10 && n<=100){
+          var item = document.createElement("span");
+          item.className = "items";
+          item.style.height = n;
+        }
+      }
+    }else{
+      alert("元素数量已达到上限！");
+    }
+
+    if(item != undefined)
+      ifDel(item);
+
+    return item;
+  }
+
+  function leftin(){
+    var item = createItem();
+    if(item != undefined){
+      queue.insertBefore(item,queue.firstChild);
+    }
+  }
+  function rightin(){
+    var item = createItem();
+    if(item != undefined){
+      queue.insertBefore(item,null);
+    }
+  }
+  function leftout(){
+    var item = queue.removeChild(queue.firstChild)
+    alert(item.innerHTML);
+  }
+  function rightout(){
+    var item = queue.removeChild(queue.lastChild)
+    alert(item.innerHTML);
+  }
+  function ifDel(item){
+    item.onclick = function(){
+      queue.removeChild(item);
+    }
+  }
+  function init(){
+    var leftinBtn = document.getElementById("leftin");
+    leftinBtn.onclick = leftin;
+    var rightinBtn = document.getElementById("rightin");
+    rightinBtn.onclick = rightin;
+    var leftoutBtn = document.getElementById("leftout");
+    leftoutBtn.onclick = leftout;
+    var rightoutBtn = document.getElementById("rightout");
+    rightoutBtn.onclick = rightout;
+
+  }
+  init();
+</script>
+</body>
+</html>
