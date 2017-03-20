@@ -5,7 +5,9 @@
     <title>IFE JavaScript Task 04</title>
     <style>
       #queue{
-        /*height: 100px;*/
+        height: 150px;
+        display: table-cell;
+        vertical-align: bottom;
       }
       .items {
         background-color: red;
@@ -15,6 +17,9 @@
         width: 10px;
         display: inline-block;
       }
+      .data {
+        display: none;
+      }
     </style>
   </head>
 <body>
@@ -23,6 +28,7 @@
   <button id="rightin">右侧入</button>
   <button id="leftout">左侧出</button>
   <button id="rightout">右侧出</button>
+  <button id="sort">排序</button>
   <div id="queue"></div>
 <script>
   var queue = document.getElementById("queue");
@@ -35,6 +41,12 @@
           var item = document.createElement("span");
           item.className = "items";
           item.style.height = n;
+
+          var data = document.createElement("span");
+          data.className = "data";
+          data.innerHTML = n;
+
+          item.appendChild(data);
         }
       }
     }else{
@@ -60,18 +72,35 @@
     }
   }
   function leftout(){
-    var item = queue.removeChild(queue.firstChild)
-    alert(item.innerHTML);
+    var item = queue.removeChild(queue.firstChild);
+    alert(item.children[0].innerHTML);
   }
   function rightout(){
     var item = queue.removeChild(queue.lastChild)
-    alert(item.innerHTML);
+    alert(item.children[0].innerHTML);
   }
   function ifDel(item){
     item.onclick = function(){
       queue.removeChild(item);
     }
   }
+
+  function sorting(){
+    for(var i=1; i<queue.children.length; i++){
+      for(var j=0; j<queue.children.length-i; j++){
+        if(Number(queue.children[j].children[0].innerHTML)>Number(queue.children[j+1].children[0].innerHTML)){
+
+          var temp = queue.children[j].children[0].innerHTML;
+          queue.children[j].children[0].innerHTML = queue.children[j+1].children[0].innerHTML;
+          queue.children[j+1].children[0].innerHTML = temp;
+
+          queue.children[j].style.height = queue.children[j].children[0].innerHTML;
+          queue.children[j+1].style.height = queue.children[j+1].children[0].innerHTML;
+        }
+      }
+    }
+  }
+
   function init(){
     var leftinBtn = document.getElementById("leftin");
     leftinBtn.onclick = leftin;
@@ -81,7 +110,8 @@
     leftoutBtn.onclick = leftout;
     var rightoutBtn = document.getElementById("rightout");
     rightoutBtn.onclick = rightout;
-
+    var sort = document.getElementById("sort");
+    sort.onclick = sorting;
   }
   init();
 </script>
