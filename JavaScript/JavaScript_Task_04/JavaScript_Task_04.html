@@ -29,6 +29,8 @@
       item.className = "items";
       item.innerHTML = n;
     }
+    if(item != undefined)
+      ifDel(item);
     return item;
   }
 
@@ -36,7 +38,6 @@
     var item = createItem();
     if(item != undefined){
       queue.insertBefore(item,queue.firstChild);
-      ifDel(item);
     }
   }
 
@@ -44,7 +45,6 @@
     var item = createItem();
     if(item != undefined){
       queue.insertBefore(item,null);
-      ifDel(item);
     }
   }
 
